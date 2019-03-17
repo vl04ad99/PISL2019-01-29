@@ -87,7 +87,8 @@ public class A_QSort {
             points[i] = scanner.nextInt();
             System.out.println(points[i]);
         }
-
+        System.out.println("Старт " + segments[0].start);
+        doSort(segments, 0, segments.length - 1);
         for (int i = 0; i < points.length; i++) {
             int count = 0;
             for (Segment segment : segments) {
@@ -108,7 +109,7 @@ public class A_QSort {
         return result;
     }
 
-    private static void doSort(Segment[] segments,int start, int end) {
+    private static void doSort(Segment[] segments, int start, int end) {
         if (start >= end)
             return;
         int i = start, j = end;
@@ -130,13 +131,13 @@ public class A_QSort {
                     cur = i;
             }
         }
-        doSort(segments,start, cur);
-        doSort(segments,cur + 1, end);
+        doSort(segments, start, cur);
+        doSort(segments, cur + 1, end);
     }
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson05/dataA.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673601/zdasuk/lesson05/dataA.txt");
         A_QSort instance = new A_QSort();
         int[] result = instance.getAccessory(stream);
         for (int index : result) {
