@@ -3,6 +3,7 @@ package lesson06;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -28,8 +29,10 @@ import java.util.Scanner;
 
     Sample Input:
     5
-    5 3 4 4 2
+            5 3 4 4 2
 
+    D:      1 1 2 3 4
+    prev:  -1 1 1 3 4
     Sample Output:
     4
     1 3 4 5
@@ -50,11 +53,62 @@ public class C_LongNotUpSubSeq {
             m[i] = scanner.nextInt();
         }
         //тут реализуйте логику задачи методами динамического программирования (!!!)
-        int result = 0;
+        int result = solveTask(m);
 
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
+    }
+
+    int solveTask(int[] a) {
+        int[] d = new int[a.length];
+        int[] prev = new int[a.length];
+
+
+        for (int i = 0; i < d.length; i++) {
+            d[i] = 1;
+            prev[i]=-1;
+
+            for (int j = 0; j <= i- 1; j++) {
+
+                if (a[j] >= a[i] && d[j] + 1 > d[i]) {
+                    d[i] = d[j] + 1;
+                    prev[i]=j+1;
+                }
+            }
+        }
+
+        int ans = 0;
+
+        for (int i = 0; i < d.length; i++) {
+            ans = Math.max(ans, d[i]);
+        }
+
+        int[] l = new int[ans];
+        int[] indexes = new int[ans];
+        int k=0;
+        for (int i=1; i <d.length;i++){
+            if (d[i]>=d[k]){
+                k=i;
+            }
+        }
+
+        int j=ans-1;
+        while (k>=0){
+            l[j]=a[k];
+            indexes[j]=k+1;
+            j=j-1;
+            k=prev[k]-1;
+        }
+
+        System.out.println("Indexes:");
+        Arrays.stream(indexes).forEach(el->System.out.print(el + " "));
+        System.out.println();
+        System.out.println("Sequence:");
+        Arrays.stream(l).forEach(el->System.out.print(el + " "));
+        System.out.println();
+
+        return ans;
     }
 
 
