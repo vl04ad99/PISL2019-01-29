@@ -9,7 +9,7 @@ package by.it.group673601.kopytko.lesson01;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FiboC {
+public class  FiboC {
 
     private long startTime = System.currentTimeMillis();
 
