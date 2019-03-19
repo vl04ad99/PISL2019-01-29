@@ -52,9 +52,7 @@ public class B_Sheduler {
     List<B_Sheduler.Event> calcStartTimes(B_Sheduler.Event[] events, int from, int to) {
         List<B_Sheduler.Event> result = new ArrayList<>();
 
-
-        Arrays
-                .stream(events)
+        Arrays.stream(events)
                 .sorted()
                 .filter(event -> event.start >= from && event.stop <= to)
                 .forEach(event -> {
