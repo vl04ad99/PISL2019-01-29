@@ -65,21 +65,20 @@ public class B_MergeSort {
         int[] a=new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = scanner.nextInt();
-            System.out.println(a[i]);
+            System.out.print(a[i]);
 
         }
+        System.out.println();
 
         // тут ваше решение (реализуйте сортировку слиянием)
         // https://ru.wikipedia.org/wiki/Сортировка_слиянием
 
         a = mergeSort(a, 0, a.length - 1);
 
-
-
-
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return a;
     }
+
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
         InputStream stream = new FileInputStream(root + "by/it/group673601/gertsik/lesson04/dataB.txt");
