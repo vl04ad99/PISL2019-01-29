@@ -39,14 +39,37 @@ import java.util.Scanner;
 
 public class A_EditDist {
 
+    char[] one;
+    char[] two;
 
     int getDistanceEdinting(String one, String two) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-        int result = 0;
+        this.one=one.toCharArray();
+        this.two=two.toCharArray();
+        int result = levenstain(this.one.length,this.two.length);
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
+    }
+
+    int levenstain(int i, int j){
+        if (i==0 && j==0){
+            return 0;
+        }else {
+            if (i==0){
+                return j;
+            }else {
+                if (j==0){
+                    return i;
+                }else {
+                    if (one[i-1]==two[j-1]){
+                        return levenstain(i-1,j-1);
+                    }else {
+                        return Math.min(levenstain(i-1,j),Math.min(levenstain(i,j-1),levenstain(i-1,j-1)))+1;
+                    }
+                }
+            }
+        }
     }
 
 
