@@ -92,6 +92,7 @@ public class A_Huffman {
 
         Map<Character, Integer> count = new HashMap<>();
 
+        // Считаю кол-во каждого символа
         for(int i =0; i<s.length(); i++){
             char c = s.charAt(i);
             if(count.containsKey(c)){
