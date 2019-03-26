@@ -38,16 +38,39 @@ import java.util.Scanner;
 */
 
 public class B_EditDist {
-
+    private  char[] first;
+    private  char[] second;
 
     int getDistanceEdinting(String one, String two) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
+        first = one.toCharArray();
+        second = two.toCharArray();
+        return editDistTD(first, second);
+    }
 
+    private int editDistTD(char[] first, char[] second){
+        int[][] array = new int[first.length][second.length];
+        for(int i = 0; i < first.length; i++){
+            array[i][0] = i;
+        }
+        for(int j = 0; j < second.length; j++){
+            array[0][j] = j;
+        }
+        int c;
+        for(int i = 1; i < first.length; i++){
+            for(int j = 1; j < second.length; j++){
+                c = diff(first[i], second[j]);
+                array[i][j] = Math.min(array[i - 1][j], Math.min(array[i][j - 1]+1, array[i - 1][j - 1])) + c;
+            }
+        }
+        return array[first.length-1][second.length-1];
+    }
 
-
-        int result = 0;
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
-        return result;
+    private int diff(char a, char b){
+        if(a == b){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 
 
