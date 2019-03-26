@@ -3,8 +3,6 @@ package by.it.group673601.kavzovich.lesson05;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
