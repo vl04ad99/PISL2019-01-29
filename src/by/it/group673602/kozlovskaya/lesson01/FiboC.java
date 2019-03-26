@@ -38,7 +38,7 @@ public class FiboC {
         else if (m == 1){
             return 0;
         }
-        ArrayList<Long> remaindArr = new ArrayList<>(2);
+        ArrayList<Long> remaindArr = new ArrayList<>();
         remaindArr.add(0L);
         remaindArr.add(1L);
         int i = 2;
