@@ -65,7 +65,7 @@ public class A_BinaryFind {
                 }
             }
 
-            
+
             result[i]=searchIndex;
 
 
