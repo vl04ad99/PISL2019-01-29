@@ -38,15 +38,31 @@ import java.util.Scanner;
 */
 
 public class A_EditDist {
-
+    private  char[] first;
+    private  char[] second;
 
     int getDistanceEdinting(String one, String two) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
+        first = one.toCharArray();
+        second = two.toCharArray();
+        return editDistTD(first.length, second.length);
+    }
 
-
-        int result = 0;
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
-        return result;
+    private int editDistTD(int i, int j){
+        if(i == 0 && j == 0){
+            return 0;
+        }
+        if( i == 0){
+            return j;
+        }
+        else if(j == 0){
+            return i;
+        }
+        if(first[i-1] == second[j-1]){
+            return editDistTD(i-1, j-1);
+        }
+        else{
+            return Math.min(editDistTD(i - 1, j), Math.min(editDistTD(i, j - 1), editDistTD(i - 1, j - 1))) + 1;
+        }
     }
 
 
