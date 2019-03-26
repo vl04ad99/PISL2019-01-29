@@ -81,7 +81,7 @@ public class B_MergeSort {
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/group673601/gertsik/lesson04/dataB.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673601/shabanovich/lesson04/dataA.txt");
         B_MergeSort instance = new B_MergeSort();
         //long startTime = System.currentTimeMillis();
         int[] result=instance.getMergeSort(stream);
