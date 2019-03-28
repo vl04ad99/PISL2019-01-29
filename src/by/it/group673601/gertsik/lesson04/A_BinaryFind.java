@@ -36,8 +36,8 @@ public class A_BinaryFind {
         int n = scanner.nextInt();
         //сам отсортированный массива
         int[] a=new int[n];
-        for (int i = 1; i <= n; i++) {
-            a[i-1] = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            a[i] = scanner.nextInt();
         }
 
         //размер массива индексов
@@ -45,31 +45,37 @@ public class A_BinaryFind {
         int[] result=new int[k];
         for (int i = 0; i < k; i++) {
             int value = scanner.nextInt();
-            //тут реализуйте бинарный поиск индекса
 
-            int right = a.length - 1;
-            int left = 0;
+//            for(int z = 0; z<n;z++){
+//                if(value == a[z]){
+//                    result[i]= z+1;
+//                    break;
+//                }
+//                else{
+//                    result[i]=-1;
+//                }
+//            }
             int searchIndex = -1;
+            int end = a.length - 1;
+            int start = 0;
 
-            while (left <= right) {
-                int mid = (left + right) / 2;
+            while (start <= end) {
+                int middle = (start + end) / 2;
 
-                if (value == a[mid]) {
-                    searchIndex = mid + 1;
+                if (value == a[middle]) {
+                    searchIndex = middle + 1;
                     break;
                 }
-                if (value < a[mid]) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
+                else if (value < a[middle]) {
+                    end = middle - 1;
+                }
+                else {
+                    start = middle + 1;
                 }
             }
 
             result[i]=searchIndex;
 
-
-
-            //result[i]=0;
         }
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;

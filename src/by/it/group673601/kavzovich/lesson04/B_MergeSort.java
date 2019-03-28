@@ -21,7 +21,7 @@ Sample Output:
 */
 public class B_MergeSort {
 
-    int[] merge(int[] ar_1, int[] ar_2){
+    private int[] merge(int[] ar_1, int[] ar_2){
         int max = ar_1.length + ar_2.length;
         int[] result = new int[max];
         int m = 0, n = 0;
@@ -43,9 +43,9 @@ public class B_MergeSort {
         return result;
     }
 
-    int[] mergeSort(int[] arr, int l, int r){
+    private int[] mergeSort(int[] arr, int l, int r){
         int[] result = new int[1];
-        int index = (int)(l + r) / 2;
+        int index = (l + r) / 2;
         if (l < r){
            return merge(mergeSort(arr, l, index), mergeSort(arr, index + 1, r));
         }else {

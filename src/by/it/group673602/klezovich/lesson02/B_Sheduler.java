@@ -3,6 +3,7 @@ package by.it.group673602.klezovich.lesson02;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*
 даны интервальные события events
 реализуйте метод calcStartTimes, так, чтобы число принятых к выполнению

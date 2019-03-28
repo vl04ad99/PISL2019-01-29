@@ -76,9 +76,9 @@ public class C_GreedyKnapsack {
                 result+=items[i].cost;
             }
             else {
-                int tempWeight = W - items[i].weight;
-                weight += tempWeight;
-                result += (double) (tempWeight * items[i].cost)/items[i].weight;
+                int tempWeight = W - weight;
+                weight = W;
+                result += (tempWeight * (double) (items[i].cost/items[i].weight));
             }
         }
 
