@@ -28,25 +28,18 @@ public class FiboC {
         //решение практически невозможно найти интуитивно
         //вам потребуется дополнительный поиск информации
         //см. период Пизано
-        int i;
-        ArrayList<Long> array = new ArrayList();
-        array.add((long)0);
-        array.add((long)1);
-        for( i = 2; i < m*6; i++){
-            array.add((array.get(i - 1) + array.get(i - 2)) % m);
-            if(array.get(i) == 1 && array.get(i-1) == 0){
-                //array.remove(i-1);
-                //array.remove(i);
-
+        List<Long> list = new ArrayList<>();
+        list.add(0L);
+        list.add(1L);
+        for (int i = 2; i < (m * 6); i++) {
+            list.add((list.get(i - 1) + list.get(i - 2)) % m);
+            if (list.get(i) == 1 && list.get(i - 1) == 0) {
+                list.remove(i);
+                list.remove(i-1);
                 break;
             }
-
         }
-
-        int p = array.size()-2;
-       return array.get((int)n%p);
-
-
+        return list.get((int)n%list.size());
     }
 
 

@@ -29,10 +29,10 @@ public class A_VideoRegistrator {
         int i=0;                              //i - это индекс события events[i]
 
         Arrays.sort(events);
-        double eventLength = events[0] + workDuration;
+        double eventLength = events[0] + workDuration; // время выключения регистратора
         result.add(events[0]);
         for (double e : events){
-            if (e > eventLength){
+            if (e > eventLength){           //events  -   время наступления события
                 eventLength = e + workDuration;
                 result.add(e);
             }

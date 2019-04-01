@@ -74,7 +74,6 @@ public class C_GreedyKnapsack {
         for (int i = 0; i < items.length; i++) {
             items[i].costOfOne = items[i].cost / items[i].weight;
         }
-
         Arrays.sort(items);
 
         int nWeHave = n, wWeHave = W;
