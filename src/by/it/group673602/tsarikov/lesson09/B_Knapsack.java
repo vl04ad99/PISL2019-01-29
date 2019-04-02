@@ -37,17 +37,27 @@ public class B_Knapsack {
         for (int i = 0; i < n; i++) {
             gold[i]=scanner.nextInt();
         }
-
-
-        int result = 0;
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
-        return result;
+        return knapsackWithoutRepsBU(w,n,gold);
     }
 
 
+    private int knapsackWithoutRepsBU(int W, int n, int[] gold) {
+        int[] array = new int[W];
+        for(int i = 0; i < W; i++){
+            for(int j = 0; j < n; j++) {
+                if (gold[j] <= i) {
+                    while (array[i] < i) {
+                        array[i] = Math.max(array[i], array[i] + gold[j]);
+                    }
+                }
+            }
+        }
+        return array[W-1];
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson09/dataB.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673602/tsarikov/lesson09/dataB.txt");
         B_Knapsack instance = new B_Knapsack();
         int res=instance.getMaxWeight(stream);
         System.out.println(res);
