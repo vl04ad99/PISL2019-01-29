@@ -32,9 +32,20 @@ public class B_CountSort {
         }
         //тут реализуйте логику задачи с применением сортировки подсчетом
 
+        int min = 0;
+        int max = 10;
+        int[] countIntegers = new int[max - min + 1];
 
+        for (int i = 0; i < points.length; i++) {
+            countIntegers[points[i] - min]++;
+        }
 
-
+        int insertPosition = 0;
+        for (int i = min; i <= max; i++) {
+            for (int j = 0; j < countIntegers[i - min]; j++) {
+                points[insertPosition++] = i;
+            }
+        }
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return points;
