@@ -12,7 +12,7 @@ import java.util.List;
 
 */
 
-public class B_Sheduler {
+public class B_Sheduler{
     //событие у аудитории(два поля: начало и конец)
     private int a;
     static class Event{
@@ -28,6 +28,8 @@ public class B_Sheduler {
         public String toString() {
             return "("+ start +":" + stop + ")";
         }
+
+
 
     }
 
@@ -53,6 +55,7 @@ public class B_Sheduler {
         List<Event> result;
         result = new ArrayList<>();
         //ваше решение.
+
         Arrays.sort(events, (e1, e2) -> {
             if (e1.stop > e2.stop)
                 return 1;

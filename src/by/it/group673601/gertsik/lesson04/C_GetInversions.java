@@ -35,6 +35,7 @@ Sample Output:
 
 
 public class C_GetInversions {
+    int count = 0;
 
     int calc(InputStream stream) throws FileNotFoundException {
         //подготовка к чтению данных
@@ -47,47 +48,38 @@ public class C_GetInversions {
         for (int i = 0; i < n; i++) {
             a[i] = scanner.nextInt();
         }
-        //int result = 0;
+        int resulst = 0;
         //!!!!!!!!!!!!!!!!!!!!!!!!     тут ваше решение   !!!!!!!!!!!!!!!!!!!!!!!!
 
 
         int result = inversionCount(a);
-
-
-
-
-
-
-
-
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
     }
 
     private int inversionCount(int[] arr) {
-        if (arr.length < 2)
+        if (arr.length < 2) {
             return 0;
-
+        }
         int m = (arr.length + 1) / 2;
         int left[] = Arrays.copyOfRange(arr, 0, m);
         int right[] = Arrays.copyOfRange(arr, m, arr.length);
 
-        return inversionCount(left) + inversionCount(right) + merge(arr, left, right);
+        return inversionCount(left) + inversionCount(right) + Calc(left, right);
     }
-    private int merge(int[] arr, int[] left, int[] right) {
-        int i = 0, j = 0, count = 0;
+
+    private int Calc( int[] left, int[] right) {
+        int i = 0, j = 0;
+        //count = 0;
         while (i < left.length || j < right.length) {
             if (i == left.length) {
-                arr[i+j] = right[j];
                 j++;
             } else if (j == right.length) {
-                arr[i+j] = left[i];
                 i++;
             } else if (left[i] <= right[j]) {
-                arr[i+j] = left[i];
                 i++;
             } else {
-                arr[i+j] = right[j];
+                //count ++;
                 count += left.length-i;
                 j++;
             }
@@ -98,7 +90,7 @@ public class C_GetInversions {
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/group673601/gertsik/lesson04/dataC.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673601/shabanovich/lesson04/dataA.txt");
         C_GetInversions instance = new C_GetInversions();
         //long startTime = System.currentTimeMillis();
         int result = instance.calc(stream);
