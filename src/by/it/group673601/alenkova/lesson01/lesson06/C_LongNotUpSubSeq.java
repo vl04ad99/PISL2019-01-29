@@ -50,17 +50,58 @@ public class C_LongNotUpSubSeq {
             m[i] = scanner.nextInt();
         }
         //тут реализуйте логику задачи методами динамического программирования (!!!)
-        int result = 0;
 
+        int result = lengthOfLongNotUpSubSeq(m);
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
+        return result;
+    }
+
+    public int lengthOfLongNotUpSubSeq(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            return 0;
+        }
+
+        int[] maxLength = new int[numbers.length];
+        int[] previousIndex = new int[numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            maxLength[i] = 1;
+            previousIndex[i] = -1;
+            for (int j = 0; j < i; j++) {
+                if (numbers[j] >= numbers[i] && maxLength[j] + 1 >= maxLength[i]) {
+                    maxLength[i] = maxLength[j] + 1;
+                    previousIndex[i] = j;
+                }
+            }
+        }
+
+        int result = 0;
+        for (int i = 0; i < maxLength.length; i++) {
+            if (maxLength[i] > result) {
+                result = maxLength[i];
+            }
+        }
+
+        int[] numberOfNotUpSubSeq = new int[result];
+        int k = 1;
+        for (int i = 1; i < numbers.length; i++) {
+            if (maxLength[i] > maxLength[k]) {
+                k = i;
+            }
+        }
+        for(int j = result - 1; k>=0; j--){
+            numberOfNotUpSubSeq[j] = k + 1;
+            k = previousIndex[k];
+        }
+
         return result;
     }
 
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson06/dataC.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673601/alenkova/lesson01/lesson06/dataC.txt");
         C_LongNotUpSubSeq instance = new C_LongNotUpSubSeq();
         int result = instance.getNotUpSeqSize(stream);
         System.out.print(result);
