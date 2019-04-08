@@ -65,7 +65,7 @@ public class B_Huffman {
         String str = scanner.nextLine();
         Character symbol;
         for (int i = 0; i < str.length();){
-            for(int j = i + 1; ;j++) {
+            for(int j = i;;j++) {
                 if ((symbol = codes.get(str.substring(i, j))) != null){
                     result.append(symbol);
                     i = j;

@@ -21,22 +21,22 @@ Sample Output:
 */
 public class B_MergeSort {
 
-    int[] merge(int[] ar_1, int[] ar_2){
-        int max = ar_1.length + ar_2.length;
+    int[] merge(int[] arrayFirst, int[] arraySecond){
+        int max = arrayFirst.length + arraySecond.length;
         int[] result = new int[max];
         int m = 0, n = 0;
         for (int i = 0; i < max; i++){
-            if (m >= ar_1.length & n < ar_2.length){
-                result[i] = ar_2[n];
+            if (m >= arrayFirst.length & n < arraySecond.length){
+                result[i] = arraySecond[n];
                 n++;
-            }else if(n >= ar_2.length & m < ar_1.length){
-                result[i] = ar_1[m];
+            }else if(n >= arraySecond.length & m < arrayFirst.length){
+                result[i] = arrayFirst[m];
                 m++;
-            }else if (ar_1[m] <= ar_2[n] & m < ar_1.length){
-                result[i] = ar_1[m];
+            }else if (arrayFirst[m] <= arraySecond[n] & m < arrayFirst.length){
+                result[i] = arrayFirst[m];
                 m++;
             }else {
-                result[i] = ar_2[n];
+                result[i] = arraySecond[n];
                 n++;
             }
         }
@@ -65,7 +65,7 @@ public class B_MergeSort {
         int[] a=new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = scanner.nextInt();
-            System.out.println(a[i]);
+            System.out.print(a[i]+" ");
 
         }
 
@@ -82,11 +82,12 @@ public class B_MergeSort {
     }
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelov/lesson04/dataB.txt");
+        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson04/dataB.txt");
         B_MergeSort instance = new B_MergeSort();
         //long startTime = System.currentTimeMillis();
         int[] result=instance.getMergeSort(stream);
         //long finishTime = System.currentTimeMillis();
+        System.out.println("Sorted array");
         for (int index:result){
             System.out.print(index+" ");
         }

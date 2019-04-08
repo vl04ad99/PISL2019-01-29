@@ -83,19 +83,18 @@ public class A_QSort {
         for (int i = 0; i < m; i++) {
             points[i]=scanner.nextInt();
         }
-        //тут реализуйте логику задачи с применением быстрой сортировки
-        //в классе отрезка Segment реализуйте нужный для этой задачи компаратор
 
         quickSort(segments, 0, segments.length - 1);
         for (int i = 0; i < points.length; i++) {
             int count = 0;
             for (Segment segment : segments) {
-                if (points[i] < segment.start) {
-                    break;
-                }
                 if (points[i] <= segment.stop && points[i] >= segment.start) {
                     count++;
                 }
+                if (points[i] < segment.start) {
+                    break;
+                }
+
             }
             result[i] = count;
         }
@@ -116,15 +115,17 @@ public class A_QSort {
 
     private int partition(Segment arr[], int begin, int end) {
         Segment pivot = arr[end];
+        //int i = (begin - 1);
         int i = (begin - 1);
+        //int i = (begin - 1);
 
         for (int j = begin; j < end; j++) {
-            if (pivot.compareTo(arr[j]) >= 0) {
+            if (arr[j].compareTo(pivot) <= 0) {
                 i++;
-
                 Segment swapTemp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = swapTemp;
+                //i++;
             }
         }
 
