@@ -47,11 +47,33 @@ public class A_LIS {
         //тут реализуйте логику задачи методами динамического программирования (!!!)
         int result = 0;
 
+        result = findSubsequence(m);
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
     }
 
+    int findSubsequence(int[] array){
+        int[] D = new int[array.length];
+        int[] prev = new int[array.length];
+
+        for(int i = 0; i < array.length; i++){
+            D[i] = 1;
+            prev[i] = -1;
+            for (int j = 0; j < i - 1; j++) {
+                if(array[j] < array[i] & D[j] + 1 > D[i]){
+                    D[i] = D[j] + 1;
+                    prev[i] = j;
+                }
+            }
+        }
+
+        int answer = 0;
+        for (int i = 0; i < array.length; i++) {
+            answer = Math.max(answer, D[i]);
+        }
+        return answer;
+    }
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";

@@ -46,8 +46,30 @@ public class B_LongDivComSubSeq {
         int result = 0;
 
 
+        result = findSubsequence(m);
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
+    }
+
+    int findSubsequence(int[] array){
+        int[] D = new int[array.length];
+
+        for (int i = 0; i < D.length; i++) {
+            D[i] = 1;
+            for (int j = 0; j <= i - 1; j++) {
+                if (array[i] % array[j] == 0 & D[j] + 1 > D[i]) {
+                    D[i] = D[j] + 1;
+                }
+            }
+        }
+
+        int ans = 0;
+
+        for (int i = 0; i < D.length; i++) {
+            ans = Math.max(ans, D[i]);
+        }
+
+        return ans;
     }
 
 

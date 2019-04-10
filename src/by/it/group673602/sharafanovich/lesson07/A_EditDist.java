@@ -42,13 +42,21 @@ public class A_EditDist {
 
     int getDistanceEdinting(String one, String two) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
+        char[] first = one.toCharArray();
+        char[] second = two.toCharArray();
 
-
-        int result = 0;
+        int result = findDistance(first, second, first.length, second.length);
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
     }
 
+    int findDistance(char[] first, char[] second, int i, int j){
+        if(i == 0 && j == 0) return 0;
+        if(i == 0) return j;
+        else if(j == 0) return i;
+        if(first[i-1] == second[j-1]) return findDistance(first, second, i-1, j-1);
+        else return Math.min(findDistance(first, second, i - 1, j), Math.min(findDistance(first, second, i, j - 1), findDistance(first, second, i - 1, j - 1))) + 1;
+    }
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
