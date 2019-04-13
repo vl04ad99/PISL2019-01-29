@@ -1,6 +1,7 @@
 package by.it.group673602.kuhalski.lesson01;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 /*
  * Даны целые числа 1<=n<=1E18 и 2<=m<=1E5,
@@ -27,9 +28,24 @@ public class FiboC {
         //решение практически невозможно найти интуитивно
         //вам потребуется дополнительный поиск информации
         //см. период Пизано
-        return 0L;
+        ArrayList<Long> periodMAss = getPeriod(m);
+        long period = periodMAss.size()-2;
+        int val = (int) (n%period);
+        return periodMAss.get(val);
     }
 
+    ArrayList getPeriod(long m) {
+        ArrayList<Long> periodMass = new ArrayList();
+        periodMass.add(0, 0L);
+        periodMass.add(1, 1L);
+        for (int i = 2; i < m * 6; i++) {
+            periodMass.add((periodMass.get(i - 1) + periodMass.get(i - 2)) % m);
+            if (periodMass.get(i) == 1 && periodMass.get(i - 1) == 0) {
+                break;
+            }
+        }
+        return periodMass;
+    }
 
 }
 
