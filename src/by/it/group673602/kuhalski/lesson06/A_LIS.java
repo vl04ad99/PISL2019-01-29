@@ -3,6 +3,9 @@ package by.it.group673602.kuhalski.lesson06;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -33,6 +36,14 @@ import java.util.Scanner;
 public class A_LIS {
 
 
+    public static void main(String[] args) throws FileNotFoundException {
+        String root = System.getProperty("user.dir") + "/src/";
+        InputStream stream = new FileInputStream(root + "by/it/group673602/kuhalski/lesson06/dataA.txt");
+        A_LIS instance = new A_LIS();
+        int result = instance.getSeqSize(stream);
+        System.out.print(result);
+    }
+
     int getSeqSize(InputStream stream) throws FileNotFoundException {
         //подготовка к чтению данных
         Scanner scanner = new Scanner(stream);
@@ -47,18 +58,19 @@ public class A_LIS {
         //тут реализуйте логику задачи методами динамического программирования (!!!)
         int result = 0;
 
+        List<Integer> listResult = new ArrayList();
 
+        for (int i = 0; i < m.length; i++) {
+            listResult.add(i, 0);
+            for (int j = 0; j < listResult.size()-1; j++) {
+                if(m[j]<m[i] &&  listResult.get(j) >= listResult.get(i) ){
+                    listResult.set(i,listResult.get(j)+1);
+                }
+            }
+        }
+        result = Collections.max(listResult)+1;
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
-    }
-
-
-    public static void main(String[] args) throws FileNotFoundException {
-        String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson06/dataA.txt");
-        A_LIS instance = new A_LIS();
-        int result = instance.getSeqSize(stream);
-        System.out.print(result);
     }
 }
 

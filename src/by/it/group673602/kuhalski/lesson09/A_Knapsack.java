@@ -44,9 +44,19 @@ public class A_Knapsack {
         for (int i = 0; i < n; i++) {
             gold[i]=scanner.nextInt();
         }
+//        int maxWeight[] = new int[w];
+//        for (int i = 0; i < w; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if(i+1==gold[j])
+//                    maxWeight[i]=gold[j];
+//            }
+//            if(maxWeight[i] == 0 )
+//            for (int j = 0; j < i ; j++) {
+//
+//            }
+//        }
 
-
-        int result = 0;
+        int result = knapsackWithRepsBU(w,n,gold);
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
     }
@@ -54,10 +64,24 @@ public class A_Knapsack {
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson09/dataA.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673602/kuhalski/lesson09/dataA.txt");
         A_Knapsack instance = new A_Knapsack();
         int res=instance.getMaxWeight(stream);
-        System.out.println(res);
+        System.out.println("CTO XYEB");
+    }
+
+    private int knapsackWithRepsBU(int w, int n, int[] gold) {
+        int[] resultArray = new int[w];
+        for(int i = 0; i < w; i++){
+            for(int j = 0; j < gold.length; j++) {
+                if (gold[j] <= i) {
+                    while (resultArray[i] < i) {
+                        resultArray[i] = Math.max(resultArray[i], resultArray[i] + gold[j]);
+                    }
+                }
+            }
+        }
+        return resultArray[w-1];
     }
 }
 
