@@ -53,7 +53,7 @@ public class A_EditDist {
 
     private int editDistTD(int i, int j) {
         if (i != 0 && j != 0) {
-            if (i == 0) {
+            if (i == 0)  {
                 return j;
             }
             if(j == 0){
