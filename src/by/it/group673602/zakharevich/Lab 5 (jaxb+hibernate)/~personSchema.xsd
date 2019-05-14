@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wmh="http://www.wmhelp.com/2003/eGenerator" elementFormDefault="qualified">
+  <xs:element name="persons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="person"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="person">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="lastName"/>
+        <xs:element ref="firstNmae"/>
+        <xs:element ref="thirdName"/>
+        <xs:element ref="birthDate"/>
+        <xs:element ref="gender"/>
+        <xs:element ref="passport"/>
+        <xs:element ref="address"/>
+        <xs:element ref="mobile"/>
+        <xs:element ref="nationality"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lastName" type="xs:string"/>
+  <xs:element name="firstNmae" type="xs:string"/>
+  <xs:element name="thirdName" type="xs:string"/>
+  <xs:element name="birthDate" type="xs:date"/>
+  <xs:simpleType name="gender" type="xs:string">
+                 <xs:restriction>
+                                 <xs:enumeration value="Мужской"/>
+                                 <xs:enumeration value="Женский"/>
+                 </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="passport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="seria"/>
+        <xs:simpleType ref="number">
+                       <xs:restriction>
+                                       <xs:pattern value="[0-9]{5,5}"/>
+                       </xs:restriction>
+        </xs:simpleType>
+        <xs:element ref="idNumber"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="seria" type="xs:string"/>
+  <xs:element name="number" type="xs:string"/>
+  <xs:element name="idNumber" type="xs:string"/>
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="actualCity"/>
+        <xs:element ref="actualAddress"/>
+        <xs:element ref="releaseCity"/>
+        <xs:element ref="releaseAddress"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="actualCity" type="xs:string"/>
+  <xs:element name="actualAddress" type="xs:string"/>
+  <xs:element name="releaseCity" type="xs:string"/>
+  <xs:element name="releaseAddress" type="xs:string"/>
+  <xs:element name="mobile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="homeMob"/>
+        <xs:element ref="phone"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="homeMob" type="xs:string"/>
+  <xs:element name="phone" type="xs:string"/>
+  <xs:element name="nationality" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="address" type="Address"/>
+
+  <xs:element name="passport" type="Passport"/>
+
+  <xs:element name="person" type="Person"/>
+
+  <xs:element name="persons" type="persons"/>
+
+  <xs:complexType name="persons">
+    <xs:sequence>
+      <xs:element ref="person" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element name="lastName" type="xs:string"/>
+      <xs:element name="firstName" type="xs:string"/>
+      <xs:element name="thirdName" type="xs:string"/>
+      <xs:element name="gender" type="gender" minOccurs="0"/>
+      <xs:element name="birthDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element ref="address" minOccurs="0"/>
+      <xs:element ref="passport"/>
+      <xs:element name="nation" type="nationality" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="homePhone" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="login" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element name="actualCity" type="city" minOccurs="0"/>
+      <xs:element name="actualAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="releaseCity" type="city" minOccurs="0"/>
+      <xs:element name="releaseAddress" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Passport">
+    <xs:sequence>
+      <xs:element name="seria" type="xs:string" minOccurs="0"/>
+      <xs:element name="number" type="xs:string" minOccurs="0"/>
+      <xs:element name="idNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="gender">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="&#1056;&#1114;&#1057;&#1107;&#1056;&#182;&#1057;&#1027;&#1056;&#1108;&#1056;&#1109;&#1056;&#8470;"/>
+      <xs:enumeration value="&#1056;&#8211;&#1056;&#181;&#1056;&#1029;&#1057;&#1027;&#1056;&#1108;&#1056;&#1105;&#1056;&#8470;"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="city">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="&#1056;&#1114;&#1056;&#1105;&#1056;&#1029;&#1057;&#1027;&#1056;&#1108;"/>
+      <xs:enumeration value="&#1056;&#8220;&#1057;&#1026;&#1056;&#1109;&#1056;&#1169;&#1056;&#1029;&#1056;&#1109;"/>
+      <xs:enumeration value="&#1056;&#8220;&#1056;&#1109;&#1056;&#1112;&#1056;&#181;&#1056;&#187;&#1057;&#1034;"/>
+      <xs:enumeration value="&#1056;&#8217;&#1056;&#1105;&#1057;&#8218;&#1056;&#181;&#1056;&#177;&#1057;&#1027;&#1056;&#1108;"/>
+      <xs:enumeration value="&#1056;&#8216;&#1057;&#1026;&#1056;&#181;&#1057;&#1027;&#1057;&#8218;"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="nationality">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="&#1056;&#8216;&#1056;&#181;&#1056;&#187;&#1056;&#176;&#1057;&#1026;&#1057;&#1107;&#1057;&#1027;"/>
+      <xs:enumeration value="&#1056;&#160;&#1056;&#1109;&#1057;&#1027;&#1057;&#1027;&#1056;&#1105;&#1057;&#1039;&#1056;&#1029;&#1056;&#1105;&#1056;&#1029;"/>
+      <xs:enumeration value="&#1056;&#1032;&#1056;&#1108;&#1057;&#1026;&#1056;&#176;&#1056;&#1105;&#1056;&#1029;&#1056;&#181;&#1057;&#8224;"/>
+      <xs:enumeration value="&#1056;&#1113;&#1056;&#176;&#1056;&#183;&#1056;&#176;&#1057;&#8230;"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

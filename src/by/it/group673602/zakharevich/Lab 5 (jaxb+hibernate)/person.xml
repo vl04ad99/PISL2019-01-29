@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///E:/предметы/6%20сем/ПИСЛ/Lab%205%20(jaxb+hibernate)/personSchema.xsd">
+         <person>
+                 <lastName>Елисеев</lastName>
+                 <firstNmae>Андрей</firstNmae>
+                 <thirdName>Александрович</thirdName>
+                 <birthDate>05.16.1999</birthDate>
+                 <gender>Мужской</gender>
+                 <passport>
+                     <seria>HB</seria>
+                     <number>2321866</number>
+                     <idNumber>23zd324dds</idNumber>
+                 </passport>
+                 <address>
+                          <actualCity>Минск</actualCity>
+                          <actualAddress>ул. Я. Колоса 28</actualAddress>
+                          <releaseCity>Гомель</releaseCity>
+                          <releaseAddress>ул. Гомельская 26</releaseAddress>
+                 </address>
+                 <mobile>
+                         <homeMob>80292321866</homeMob>
+                         <phone>+375292321866</phone>
+                 </mobile>
+                 <nationality>Беларус</nationality>
+         </person>
+</persons>
+
+

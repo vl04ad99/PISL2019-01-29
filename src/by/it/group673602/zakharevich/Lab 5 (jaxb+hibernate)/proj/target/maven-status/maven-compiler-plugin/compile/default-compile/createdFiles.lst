@@ -1,0 +1,11 @@
+logic\Nationality.class
+PersonService.class
+logic\City.class
+logic\Address.class
+logic\Passport.class
+logic\Gender.class
+hibernate\ServiceDAO.class
+hibernate\HibernateUtil.class
+logic\Persons.class
+logic\Person.class
+Application.class
